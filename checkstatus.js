@@ -12,7 +12,7 @@ const requestData = {
     "order_no": encrypt("34rfswf7kllllfr0i0uf0j", merchantEncryptionKey)
 }
 
-receivePaymentLinkResponse(requestData)
+receiveStatusResponse(requestData)
     .then((response) => {
         // console.log(response, "status response");
         const decryptedData = decrypt(response, merchantEncryptionKey)
@@ -44,7 +44,7 @@ function decrypt(text, skey) {
     return decryptedData;
 }
 
-async function receivePaymentLinkResponse(encryptedRequest) {
+async function receiveStatusResponse(encryptedRequest) {
     try {
         const response = await axios.post(
             `${baseURL}`,
